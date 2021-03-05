@@ -2,7 +2,9 @@
  * @format
  */
 
+
 import {AppRegistry} from 'react-native';
+import React from 'react';
 import App from './App';
 import {name as appName} from './app.json';
 import Task from './src/db/Task'
@@ -22,5 +24,11 @@ const database = new Database({
 })
 
 
+const AppWrapper = (props) => {
+  return <App {...{
+    ...props,
+    database: database,
+  }}/>;
+};
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => AppWrapper);
